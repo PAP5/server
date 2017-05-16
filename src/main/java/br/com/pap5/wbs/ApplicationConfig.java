@@ -14,6 +14,7 @@ public class ApplicationConfig extends Application {
     }
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(br.com.pap5.wbs.PFResource.class);
         resources.add(br.com.pap5.wbs.UsuarioResource.class);
     }   
 }
