@@ -1,0 +1,15 @@
+target/
+dist/
+build/
+
+#netbeans
+core
+nbproject/*
+!nbproject/project.properties
+!nbproject/project.xml
+nbactions.xml
+nb-configuration.xml
+
+#java
+*.class
+
