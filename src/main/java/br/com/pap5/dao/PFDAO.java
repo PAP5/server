@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public class PFDAO extends DAO<PF> {
+public class PFDAO extends DAO implements MetodosPFDAO{
 
     public PFDAO(EntityManager em) {
         super(em);

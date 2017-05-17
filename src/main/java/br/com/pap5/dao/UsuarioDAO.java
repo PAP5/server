@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public class UsuarioDAO extends DAO<Usuario> implements MetodosUsuarioDAO{
+public class UsuarioDAO extends DAO implements MetodosUsuarioDAO{
 
     public UsuarioDAO(EntityManager em) {
         super(em);
