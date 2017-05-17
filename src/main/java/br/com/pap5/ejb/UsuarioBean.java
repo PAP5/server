@@ -32,4 +32,9 @@ public class UsuarioBean implements UsuarioRemote {
     public List<Usuario> consultarTodos() {
         return new UsuarioDAO(em).consultarTodos();
     }
+
+    @Override
+    public Usuario consultarPorUsuario(String usuario) {
+        return new UsuarioDAO(em).consultarPorUsuario(usuario);
+    }
 }

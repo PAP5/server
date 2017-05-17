@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public class UsuarioDAO extends DAO<Usuario> {
+public class UsuarioDAO extends DAO<Usuario> implements MetodosUsuarioDAO{
 
     public UsuarioDAO(EntityManager em) {
         super(em);
@@ -42,5 +42,12 @@ public class UsuarioDAO extends DAO<Usuario> {
     public List<Usuario> consultarTodos() {
         Query q = em.createNamedQuery("Usuario.consultarTodos");
         return q.getResultList();
+    }
+    
+    @Override
+    public Usuario consultarPorUsuario(String usuario){
+        Query q = em.createNamedQuery("Usuario.consultarPorUsuario", Usuario.class);
+        q.setParameter("usuario", usuario);
+        return (Usuario)q.getSingleResult();
     }
 }

@@ -14,7 +14,9 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "Usuario.consultarTodos",
-            query = "select u from Usuario u")
+            query = "select u from Usuario u"),
+    @NamedQuery(name = "Usuario.consultarPorUsuario", 
+            query = "select u from Usuario u where u.usuario = :usuario")
 })
 @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1, initialValue = 1)
 @Table(name = "usuario")
