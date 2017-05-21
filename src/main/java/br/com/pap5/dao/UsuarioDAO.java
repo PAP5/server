@@ -1,11 +1,14 @@
 package br.com.pap5.dao;
 
 import br.com.pap5.bo.Usuario;
+import com.google.gson.Gson;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-public class UsuarioDAO extends DAO implements MetodosUsuarioDAO{
+public class UsuarioDAO extends DAO implements MetodosUsuarioDAO {
 
     public UsuarioDAO(EntityManager em) {
         super(em);
@@ -28,9 +31,11 @@ public class UsuarioDAO extends DAO implements MetodosUsuarioDAO{
 
     @Override
     public void remover(Usuario o) {
-        if (em.contains(o)) {
-            em.remove(o);
+        Usuario u = em.find(Usuario.class, o.getId());
+        if (em.contains(u)) {
+            em.remove(u);
         }
+
     }
 
     @Override
@@ -43,11 +48,11 @@ public class UsuarioDAO extends DAO implements MetodosUsuarioDAO{
         Query q = em.createNamedQuery("Usuario.consultarTodos");
         return q.getResultList();
     }
-    
+
     @Override
-    public Usuario consultarPorUsuario(String usuario){
+    public Usuario consultarPorUsuario(String usuario) {
         Query q = em.createNamedQuery("Usuario.consultarPorUsuario", Usuario.class);
         q.setParameter("usuario", usuario);
-        return (Usuario)q.getSingleResult();
+        return (Usuario) q.getSingleResult();
     }
 }

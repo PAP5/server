@@ -32,8 +32,9 @@ public class PJDAO extends DAO implements MetodosPJDAO {
 
     @Override
     public void remover(PJ o) {
-        if (em.contains(o)) {
-            em.remove(o);
+        PJ pj = em.find(PJ.class, o.getId());
+        if (em.contains(pj)) {
+            em.remove(pj);
         }
     }
 

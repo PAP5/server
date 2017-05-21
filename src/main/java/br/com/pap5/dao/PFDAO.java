@@ -31,7 +31,8 @@ public class PFDAO extends DAO implements MetodosPFDAO{
     }
 
     @Override
-    public void remover(PF pf) {
+    public void remover(PF o) {
+        PF pf = em.find(PF.class, o.getId());
         if (em.contains(pf)) {
             em.remove(pf);
         }

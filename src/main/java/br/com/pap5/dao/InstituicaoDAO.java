@@ -28,8 +28,9 @@ public class InstituicaoDAO extends DAO implements MetodosInstituicaoDAO {
 
     @Override
     public void remover(Instituicao o) {
-        if (em.contains(o)) {
-            em.remove(o);
+        Instituicao i = em.find(Instituicao.class, o.getId());
+        if (em.contains(i)) {
+            em.remove(i);
         }
     }
 
