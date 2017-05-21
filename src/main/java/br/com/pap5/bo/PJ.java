@@ -89,6 +89,10 @@ public class PJ implements Serializable {
         return datainscricao;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -123,5 +127,9 @@ public class PJ implements Serializable {
 
     public void setDatainscricao(Date datainscricao) {
         this.datainscricao = datainscricao;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

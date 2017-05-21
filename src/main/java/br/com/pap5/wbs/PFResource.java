@@ -2,6 +2,8 @@ package br.com.pap5.wbs;
 
 import br.com.pap5.bo.PF;
 import br.com.pap5.ejb.PFRemote;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ws.rs.Path;
 
@@ -28,6 +30,7 @@ public class PFResource extends DefaultResource {
            return gson.toJson(ejb.salvar(pf));
        }
        catch(Exception e){
+           Logger.getLogger(PFResource.class.getName()).log(Level.SEVERE, e.getMessage(), e);
            return null;
        }
     }

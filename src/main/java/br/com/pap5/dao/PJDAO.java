@@ -1,6 +1,7 @@
 package br.com.pap5.dao;
 
 import br.com.pap5.bo.PJ;
+import br.com.pap5.bo.Usuario;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -13,6 +14,9 @@ public class PJDAO extends DAO implements MetodosPJDAO {
 
     @Override
     public PJ salvar(PJ o) throws Exception {
+        Usuario u = new UsuarioDAO(em).consultarPorId(o.getUsuario().getId());
+        o.setUsuario(u);
+        
         if (o.getId() == null) {
             em.persist(o);
         } else {

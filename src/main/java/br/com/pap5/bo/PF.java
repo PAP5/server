@@ -44,7 +44,7 @@ public class PF implements Serializable {
     @Column(length = 12)
     private String telcel;
     @Column(nullable = false)
-    @Temporal(value = TemporalType.TIMESTAMP)
+    @Temporal(value = TemporalType.DATE)
     private Date datainscricao;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -83,6 +83,10 @@ public class PF implements Serializable {
         return datainscricao;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -113,5 +117,9 @@ public class PF implements Serializable {
 
     public void setDatainscricao(Date datainscricao) {
         this.datainscricao = datainscricao;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
