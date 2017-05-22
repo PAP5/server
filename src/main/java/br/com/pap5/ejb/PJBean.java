@@ -32,4 +32,9 @@ public class PJBean implements PJRemote{
     public List<PJ> consultarTodos() {
         return new PJDAO(em).consultarTodos();
     }
+
+    @Override
+    public PJ consultarPorUsuario(Long id) {
+        return new PJDAO(em).consultarPorUsuario(id);
+    }
 }

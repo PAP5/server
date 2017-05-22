@@ -5,14 +5,18 @@ import br.com.pap5.ejb.PJRemote;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 @Path("pj")
-public class PJResource extends DefaultResource{
+public class PJResource extends DefaultResource {
 
     @EJB
     protected PJRemote ejb;
-    
+
     @Override
     public String getJson() {
         return gson.toJson(ejb.consultarTodos());
@@ -21,6 +25,23 @@ public class PJResource extends DefaultResource{
     @Override
     public String getJson(String id) {
         return gson.toJson(ejb.consultarPorId(Long.parseLong(id)));
+    }
+
+    @Path("usuario/{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getUsuarioPJ(@PathParam("id") String id) {
+        try {
+            PJ pj = ejb.consultarPorUsuario(Long.parseLong(id));
+            if (pj != null) {
+                return gson.toJson(pj);
+            } else {
+                return "false";
+            }
+        } catch (Exception e) {
+            Logger.getLogger(PFResource.class.getName()).log(Level.SEVERE, e.getMessage(), e);
+            return null;
+        }
     }
 
     @Override
@@ -44,5 +65,5 @@ public class PJResource extends DefaultResource{
         PJ pj = ejb.consultarPorId(Long.valueOf(id));
         ejb.remover(pj);
     }
-    
+
 }

@@ -32,4 +32,9 @@ public class PFBean implements PFRemote {
     public List<PF> consultarTodos() {
         return new PFDAO(em).consultarTodos();
     }
+
+    @Override
+    public PF consultarPorUsuario(Long id) {
+        return new PFDAO(em).consultarPorUsuario(id);
+    }
 }

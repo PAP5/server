@@ -16,11 +16,11 @@ public class PJDAO extends DAO implements MetodosPJDAO {
     public PJ salvar(PJ o) throws Exception {
         Usuario u = new UsuarioDAO(em).consultarPorId(o.getUsuario().getId());
         o.setUsuario(u);
-        
+
         if (o.getId() == null) {
             em.persist(o);
         } else {
-            if(!em.contains(o)){
+            if (!em.contains(o)) {
                 if (em.find(PJ.class, o.getId()) == null) {
                     throw new Exception("Erro ao atualizar pessoa juridica");
                 }
@@ -47,5 +47,16 @@ public class PJDAO extends DAO implements MetodosPJDAO {
     public List<PJ> consultarTodos() {
         Query q = em.createNamedQuery("PJ.consultarTodos");
         return q.getResultList();
+    }
+
+    @Override
+    public PJ consultarPorUsuario(Long id) {
+        Query q = em.createNamedQuery("PJ.consultarPorUsuario", PJ.class);
+        q.setParameter("id", id);
+        try {
+            return (PJ) q.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

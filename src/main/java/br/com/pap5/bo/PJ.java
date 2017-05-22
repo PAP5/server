@@ -20,7 +20,9 @@ import javax.persistence.TemporalType;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "PJ.consultarTodos",
-            query="select p from PJ p")
+            query="select p from PJ p"),
+    @NamedQuery(name = "PJ.consultarPorUsuario",
+            query = "select p from PJ p where p.usuario.id = :id")
 })
 @SequenceGenerator(name = "pj_seq", sequenceName = "pj_seq", allocationSize = 1, initialValue = 1)
 @Table(name = "pj")

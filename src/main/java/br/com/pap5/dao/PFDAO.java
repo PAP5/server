@@ -4,9 +4,10 @@ import br.com.pap5.bo.PF;
 import br.com.pap5.bo.Usuario;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-public class PFDAO extends DAO implements MetodosPFDAO{
+public class PFDAO extends DAO implements MetodosPFDAO {
 
     public PFDAO(EntityManager em) {
         super(em);
@@ -16,7 +17,7 @@ public class PFDAO extends DAO implements MetodosPFDAO{
     public PF salvar(PF o) throws Exception {
         Usuario u = new UsuarioDAO(em).consultarPorId(o.getUsuario().getId());
         o.setUsuario(u);
-        
+
         if (o.getId() == null) {
             em.persist(o);
         } else {
@@ -47,5 +48,16 @@ public class PFDAO extends DAO implements MetodosPFDAO{
     public List<PF> consultarTodos() {
         Query q = em.createNamedQuery("PF.consultarTodos");
         return q.getResultList();
+    }
+
+    @Override
+    public PF consultarPorUsuario(Long id) {
+        Query q = em.createNamedQuery("PF.consultarPorUsuario", PF.class);
+        q.setParameter("id", id);
+        try {
+            return (PF) q.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
