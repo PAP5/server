@@ -34,7 +34,7 @@ public class PJResource extends DefaultResource {
         try {
             PJ pj = ejb.consultarPorUsuario(Long.parseLong(id));
             if (pj != null) {
-                return gson.toJson(pj);
+                return "true";
             } else {
                 return "false";
             }

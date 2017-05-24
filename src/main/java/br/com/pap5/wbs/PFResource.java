@@ -34,7 +34,7 @@ public class PFResource extends DefaultResource {
         try {
             PF pf = ejb.consultarPorUsuario(Long.parseLong(id));
             if (pf != null) {
-                return gson.toJson(pf);
+                return "true";
             } else {
                 return "false";
             }
