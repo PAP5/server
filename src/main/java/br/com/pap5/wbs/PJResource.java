@@ -9,7 +9,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 @Path("pj")
 public class PJResource extends DefaultResource {
@@ -29,7 +28,7 @@ public class PJResource extends DefaultResource {
 
     @Path("usuario/{id}")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(DefaultResource.PRODUZ)
     public String getUsuarioPJ(@PathParam("id") String id) {
         try {
             PJ pj = ejb.consultarPorUsuario(Long.parseLong(id));

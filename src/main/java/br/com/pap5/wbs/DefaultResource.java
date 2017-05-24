@@ -12,26 +12,29 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 public abstract class DefaultResource {
-    protected Gson gson = new Gson();
-        
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public abstract String getJson();
+
+    static final String PRODUZ = MediaType.APPLICATION_JSON + ";charset=utf-8";
     
+    protected Gson gson = new Gson();
+
+    @GET
+    @Produces(DefaultResource.PRODUZ)
+    public abstract String getJson();
+
     @Path("{id}")
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(DefaultResource.PRODUZ)
     public abstract String getJson(@PathParam("id") String id);
-    
+
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(DefaultResource.PRODUZ)
+    @Consumes(DefaultResource.PRODUZ)
     public abstract String postJson(String json);
-    
+
     @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes(DefaultResource.PRODUZ)
     public abstract void putJson(String json);
-    
+
     @DELETE
     @Path("/{id}")
     public abstract void deleteJson(final @PathParam("id") String id);
