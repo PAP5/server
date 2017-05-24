@@ -1,7 +1,7 @@
 package br.com.pap5.wbs;
 
 import br.com.pap5.bo.Instituicao;
-import br.com.pap5.ejb.InstituicaoRemote;
+import br.com.pap5.ejb.remote.InstituicaoRemote;
 import javax.ejb.EJB;
 import javax.ws.rs.Path;
 

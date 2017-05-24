@@ -1,7 +1,7 @@
 package br.com.pap5.wbs;
 
 import br.com.pap5.bo.Usuario;
-import br.com.pap5.ejb.UsuarioRemote;
+import br.com.pap5.ejb.remote.UsuarioRemote;
 import com.google.gson.Gson;
 import javax.ejb.EJB;
 import javax.ws.rs.GET;

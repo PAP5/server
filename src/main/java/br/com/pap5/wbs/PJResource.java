@@ -1,7 +1,7 @@
 package br.com.pap5.wbs;
 
 import br.com.pap5.bo.PJ;
-import br.com.pap5.ejb.PJRemote;
+import br.com.pap5.ejb.remote.PJRemote;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.EJB;

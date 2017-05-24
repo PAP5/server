@@ -1,7 +1,8 @@
-package br.com.pap5.ejb;
+package br.com.pap5.ejb.bean;
 
+import br.com.pap5.ejb.remote.PFRemote;
 import br.com.pap5.bo.PF;
-import br.com.pap5.dao.PFDAO;
+import br.com.pap5.dao.bo.PFDAO;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
