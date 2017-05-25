@@ -16,7 +16,11 @@ import javax.persistence.Table;
     @NamedQuery(name = "Usuario.consultarTodos",
             query = "select u from Usuario u"),
     @NamedQuery(name = "Usuario.consultarPorUsuario", 
-            query = "select u from Usuario u where u.usuario = :usuario")
+            query = "select u from Usuario u where u.usuario = :usuario"),
+    @NamedQuery(name = "Usuario.consultarPF",
+            query = "select p from PF p where p.usuario.id = :id"),
+    @NamedQuery(name = "Usuario.consultarPJ",
+            query = "select p from PJ p where p.usuario.id = :id")
 })
 @SequenceGenerator(name = "usuario_seq", sequenceName = "usuario_seq", allocationSize = 1, initialValue = 1)
 @Table(name = "usuario")

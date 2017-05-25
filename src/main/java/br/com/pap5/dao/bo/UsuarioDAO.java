@@ -1,5 +1,7 @@
 package br.com.pap5.dao.bo;
 
+import br.com.pap5.bo.PF;
+import br.com.pap5.bo.PJ;
 import br.com.pap5.bo.Usuario;
 import br.com.pap5.dao.DAO;
 import java.util.List;
@@ -52,5 +54,27 @@ public class UsuarioDAO extends DAO implements UsuarioDAOMetodos {
         Query q = em.createNamedQuery("Usuario.consultarPorUsuario", Usuario.class);
         q.setParameter("usuario", usuario);
         return (Usuario) q.getSingleResult();
+    }
+
+    @Override
+    public PF consultarPerfilPF(Long id) {
+        Query q = em.createNamedQuery("Usuario.consultarPF", PF.class);
+        q.setParameter("id", id);
+        try {
+            return (PF) q.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public PJ consultarPerfilPJ(Long id) {
+        Query q = em.createNamedQuery("Usuario.consultarPJ", PJ.class);
+        q.setParameter("id", id);
+        try {
+            return (PJ) q.getSingleResult();
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

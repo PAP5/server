@@ -1,5 +1,7 @@
 package br.com.pap5.ejb.bean;
 
+import br.com.pap5.bo.PF;
+import br.com.pap5.bo.PJ;
 import br.com.pap5.ejb.remote.UsuarioRemote;
 import br.com.pap5.bo.Usuario;
 import br.com.pap5.dao.bo.UsuarioDAO;
@@ -37,5 +39,15 @@ public class UsuarioBean implements UsuarioRemote {
     @Override
     public Usuario consultarPorUsuario(String usuario) {
         return new UsuarioDAO(em).consultarPorUsuario(usuario);
+    }
+
+    @Override
+    public PF consultarPerfilPF(Long id) {
+        return new UsuarioDAO(em).consultarPerfilPF(id);
+    }
+
+    @Override
+    public PJ consultarPerfilPJ(Long id) {
+        return new UsuarioDAO(em).consultarPerfilPJ(id);
     }
 }
