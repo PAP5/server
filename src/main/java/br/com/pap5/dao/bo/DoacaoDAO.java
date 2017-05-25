@@ -2,8 +2,7 @@ package br.com.pap5.dao.bo;
 
 import br.com.pap5.bo.Doacao;
 import br.com.pap5.bo.Instituicao;
-import br.com.pap5.bo.PF;
-import br.com.pap5.bo.PJ;
+import br.com.pap5.bo.Usuario;
 import br.com.pap5.dao.DAO;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -18,20 +17,10 @@ public class DoacaoDAO extends DAO implements DoacaoMetodos {
     @Override
     public Doacao salvar(Doacao o) throws Exception {
         Instituicao i = new InstituicaoDAO(em).consultarPorId(o.getInstituicao().getId());
-        PF pf = null;
-        PJ pj = null;
-        try {
-            pf = new PFDAO(em).consultarPorId(o.getPf().getId());
-        } catch (Exception e) {
-            try {
-                pj = new PJDAO(em).consultarPorId(o.getPj().getId());
-            } catch (Exception e2) {
+        Usuario u = new UsuarioDAO(em).consultarPorId(o.getUsuario().getId());
 
-            }
-        }
         o.setInstituicao(i);
-        o.setPf(pf);
-        o.setPj(pj);
+        o.setUsuario(u);
 
         if (o.getId() == null) {
             em.persist(o);
@@ -65,4 +54,10 @@ public class DoacaoDAO extends DAO implements DoacaoMetodos {
         return q.getResultList();
     }
 
+    @Override
+    public List<Doacao> consultarDoacaoPorUsuario(Long id) {
+        Query q = em.createNamedQuery("Doacao.consultarPorUsuario");
+        q.setParameter("id", id);
+        return q.getResultList();
+    }
 }

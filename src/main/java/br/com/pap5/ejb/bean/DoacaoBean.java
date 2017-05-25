@@ -33,5 +33,10 @@ public class DoacaoBean implements DoacaoRemote{
     public List<Doacao> consultarTodos() {
         return new DoacaoDAO(em).consultarTodos();
     }
+
+    @Override
+    public List<Doacao> consultarDoacaoPorUsuario(Long id) {
+        return new DoacaoDAO(em).consultarDoacaoPorUsuario(id);
+    }
     
 }
