@@ -1,6 +1,7 @@
 package br.com.pap5.wbs;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -15,8 +16,10 @@ public abstract class DefaultResource {
 
     static final String PRODUZ = MediaType.APPLICATION_JSON + ";charset=utf-8";
     
-    protected Gson gson = new Gson();
-
+    protected Gson gson = new GsonBuilder()
+            .setPrettyPrinting()
+            .create();
+    
     @GET
     @Produces(DefaultResource.PRODUZ)
     public abstract String getJson();
